@@ -3,13 +3,6 @@
 
 pipeline {
   agent any
-  environment {
-        AWS_ACCOUNT_ID="991256897826"
-        registryCredential = 'agusito.aws.credentials'
-        AWS_DEFAULT_REGION="us-east-1" 
-        IMAGE_REPO_NAME="agusito"
-        REGISTRY = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-    }
 
   stages {
 
@@ -34,7 +27,7 @@ pipeline {
 
     stage('Docker Build and Push') {
       steps {
-        withDockerRegistry('https://" + REGISTRY, "ecr:us-east-1:" + registryCredential') {
+        withDockerRegistry([credentialsId: "agusito.aws.credentials", url: "991256897826.dkr.ecr.us-east-1.amazonaws.com/agusito"]) {
           sh 'printenv'
           sh 'docker build -t 991256897826.dkr.ecr.us-east-1.amazonaws.com/agusito:""$GIT_COMMIT"" .'
           sh 'docker push 991256897826.dkr.ecr.us-east-1.amazonaws.com/agusito:""$GIT_COMMIT""'
