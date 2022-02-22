@@ -24,7 +24,7 @@ pipeline {
 
     stage('Docker Build and Push') {
       steps {
-        withDockerRegistry('https://991256897826.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:agusitoawsecr') {
+        withDockerRegistry('https://991256897826.dkr.ecr.us-east-1.amazonaws.com', 'ecr:us-east-1:agusitoawsec') {
           sh 'printenv'
           sh 'docker build -t 991256897826.dkr.ecr.us-east-1.amazonaws.com/agusito:""$GIT_COMMIT"" .'
           sh 'docker push 991256897826.dkr.ecr.us-east-1.amazonaws.com/agusito:""$GIT_COMMIT""'
