@@ -35,7 +35,7 @@ pipeline {
 
     stage('SonarQube - SAST') {
       steps {
-        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=spring-boot-numeric-application -Dsonar.host.url=http://localhost:9000 -Dsonar.login=1dd591dc4a47c332cfbca4d4a78b8705e73cbb64"
+        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=spring-boot-numeric-application -Dsonar.host.url=http://localhost:9000 -Dsonar.login=c7030f42011160f0d29ac8215add14807b29e5c0"
       }
     }
 
