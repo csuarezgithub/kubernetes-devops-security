@@ -35,14 +35,15 @@ pipeline {
 
     stage('SonarQube - Scan code vulnerabilidades') {
       steps {
-        withSonarQubeEnv('SonarQube') 
+        withSonarQubeEnv('SonarQube') {
           sh "mvn sonar:sonar -Dsonar.projectKey=spring-boot-numeric-application -Dsonar.host.url=http://192.168.58.11:9000 -Dsonar.login=b21bfe2040705c93932efcdaa50b2f6272158572"
-      }
-      timeout(time: 2, unit: 'MINUTES') {
+        }
+        timeout(time: 2, unit: 'MINUTES') {
           script {
             waitForQualityGate abortPipeline: true
           }
         }
+      }
     }
 
     stage('Docker Build and Push') {
