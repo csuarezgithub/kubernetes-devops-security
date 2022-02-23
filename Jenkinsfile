@@ -33,6 +33,12 @@ pipeline {
       }
     }
 
+    stage('SonarQube - SAST') {
+      steps {
+        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=spring-boot-numeric-application -Dsonar.host.url=http://localhost:9000 -Dsonar.login=1dd591dc4a47c332cfbca4d4a78b8705e73cbb64"
+      }
+    }
+
     stage('Docker Build and Push') {
       steps {
         withDockerRegistry([url: "https://991256897826.dkr.ecr.us-east-1.amazonaws.com/spring-boot-devops-numeric-application",credentialsId: "ecr:us-east-1:agusitoawsecr"]) {
