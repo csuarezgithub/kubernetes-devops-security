@@ -92,7 +92,9 @@ pipeline {
             sh "bash kubesec-scan.sh"
           },
           "Trivy Scan": {
+            withDockerRegistry([url: "https://991256897826.dkr.ecr.us-east-1.amazonaws.com/spring-boot-devops-numeric-application",credentialsId: "ecr:us-east-1:agusitoawsecr"]){
             sh "bash trivy-k8s-scan.sh"
+          }
           }
         )
       }
