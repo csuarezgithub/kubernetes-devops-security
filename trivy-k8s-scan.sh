@@ -2,7 +2,7 @@
 
 
 echo $imageName #getting Image name from env variable
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 991256897826.dkr.ecr.us-east-1.amazonaws.com
+# aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 991256897826.dkr.ecr.us-east-1.amazonaws.com
 
 docker run --rm -v /root/.docker/config.json:/root/.docker/config.json  \
     -v $WORKSPACE:/root/.cache/  \

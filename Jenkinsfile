@@ -93,6 +93,7 @@ pipeline {
           },
           "Trivy Scan": {
             withDockerRegistry([url: "https://991256897826.dkr.ecr.us-east-1.amazonaws.com/spring-boot-devops-numeric-application",credentialsId: "ecr:us-east-1:agusitoawsecr"]){
+            sh "aws ecr get-login-password --region us-east-1 |docker login --username AWS --password-stdin 991256897826.dkr.ecr.us-east-1.amazonaws.com"
             sh "bash trivy-k8s-scan.sh"
           }
           }
