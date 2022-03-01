@@ -5,7 +5,7 @@ pipeline {
     containerName = "devsecops-container"
     serviceName = "devsecops-svc"
     imageName = "991256897826.dkr.ecr.us-east-1.amazonaws.com/spring-boot-devops-numeric-application:${GIT_COMMIT}"
-    applicationURL = "http://192.168.58.11/"
+    applicationURL = "http://192.168.58.11"
     applicationURI = "/increment/99"
   }
 
